@@ -29,26 +29,5 @@ echo "Starting XRDP and Chrome Remote Desktop"
 echo "===================================="
 docker run --rm -p 3389:3389 -e TZ=Asia/Kolkata danielguerra/ubuntu-xrdp > /dev/null 2>&1
 
-echo "===================================="
-echo "Setting Up Chrome Remote Desktop"
-echo "===================================="
-wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb > /dev/null 2>&1
-dpkg -i chrome-remote-desktop_current_amd64.deb
-apt install --assume-yes --fix-broken > /dev/null 2>&1
-
-echo "===================================="
-echo "Configuring Chrome Remote Desktop"
-echo "===================================="
-CRP="YOUR_AUTH_TOKEN"  # Replace with your CRD auth token
-yes | /opt/google/chrome-remote-desktop/chrome-remote-desktop --setup --sign-in-profile=chrome-remote-desktop --auth-token=$CRP --force-launch-platform-type=crx-remote
-
-echo "===================================="
-echo "Chrome Remote Desktop Setup Complete"
-echo "===================================="
-
-echo "===================================="
-echo "Connect to the XRDP + Chrome Remote Desktop session using:"
-echo "Username: ubuntu"
-echo "Password: 123456"
-echo "===================================="
-
+wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb && apt install ./chrome-remote-desktop_current_amd64.deb -y
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && apt install ./google-chrome-stable_current_amd64.deb -y
