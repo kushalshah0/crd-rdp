@@ -22,12 +22,11 @@ echo "===================================="
 echo "Installing XRDP and Chrome Remote Desktop"
 echo "===================================="
 docker pull danielguerra/ubuntu-xrdp
+wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb && apt install ./chrome-remote-desktop_current_amd64.deb -y
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && apt install ./google-chrome-stable_current_amd64.deb -y
 
 clear
 echo "===================================="
 echo "Starting XRDP and Chrome Remote Desktop"
 echo "===================================="
 docker run --rm -p 3389:3389 -e TZ=Asia/Kolkata danielguerra/ubuntu-xrdp > /dev/null 2>&1
-
-wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb && apt install ./chrome-remote-desktop_current_amd64.deb -y
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && apt install ./google-chrome-stable_current_amd64.deb -y
